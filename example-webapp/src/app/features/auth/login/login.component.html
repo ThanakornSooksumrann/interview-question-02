@@ -1,0 +1,62 @@
+<div class="flex align-items-center justify-content-center min-h-screen px-3"
+     style="background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 60%, #1d4ed8 100%)">
+
+  <div class="border-round-2xl shadow-8 overflow-hidden w-full" style="max-width:420px">
+
+    <!-- Card Header -->
+    <div class="flex flex-column align-items-center justify-content-center py-5 px-4 text-center"
+         style="background: linear-gradient(160deg, #1e3a8a 0%, #2563eb 100%)">
+      <div class="flex align-items-center justify-content-center border-circle bg-white mb-4"
+           style="width:4.5rem;height:4.5rem;box-shadow:0 6px 20px rgba(0,0,0,0.25)">
+        <i class="pi pi-lock text-3xl" style="color:#1e3a8a"></i>
+      </div>
+      <h2 class="text-white text-2xl font-bold m-0 mb-1">เข้าสู่ระบบ</h2>
+      <p class="m-0 text-sm" style="color:rgba(255,255,255,0.72)">ยินดีต้อนรับ กรุณาเข้าสู่ระบบเพื่อดำเนินการต่อ</p>
+    </div>
+
+    <!-- Card Body -->
+    <div class="bg-white p-5">
+      <form [formGroup]="form" (ngSubmit)="onLogin()">
+
+        <!-- Username -->
+        <div class="field mb-4">
+          <label class="block font-semibold mb-2 text-sm" style="color:#1e3a8a">ชื่อผู้ใช้งาน</label>
+          <p-iconfield styleClass="w-full">
+            <p-inputicon styleClass="pi pi-user" />
+            <input pInputText formControlName="username" placeholder="ชื่อผู้ใช้งาน"
+                   class="w-full" autocomplete="username"
+                   [ngClass]="{'ng-invalid ng-dirty': isInvalid('username')}" />
+          </p-iconfield>
+          <small *ngIf="isInvalid('username')" class="p-error block mt-1">
+            กรุณากรอกชื่อผู้ใช้งาน
+          </small>
+        </div>
+
+        <!-- Password -->
+        <div class="field mb-5">
+          <label class="block font-semibold mb-2 text-sm" style="color:#1e3a8a">รหัสผ่าน</label>
+          <p-password formControlName="password" placeholder="รหัสผ่าน"
+                      [feedback]="false" [toggleMask]="true"
+                      styleClass="w-full" inputStyleClass="w-full"
+                      autocomplete="current-password"
+                      [ngClass]="{'ng-invalid ng-dirty': isInvalid('password')}" />
+          <small *ngIf="isInvalid('password')" class="p-error block mt-1">
+            กรุณากรอกรหัสผ่าน
+          </small>
+        </div>
+
+        <!-- Submit -->
+        <p-button type="submit" label="ลงชื่อเข้าใช้งาน" icon="pi pi-sign-in"
+                  styleClass="w-full mb-4" [loading]="loading" />
+
+        <!-- Register link -->
+        <div class="text-center pt-2" style="border-top:1px solid #e2e8f0">
+          <span class="text-color-secondary text-sm">ยังไม่มีบัญชี?&nbsp;</span>
+          <a routerLink="/register" class="font-semibold text-sm cursor-pointer no-underline"
+             style="color:#1e3a8a">สมัครสมาชิก</a>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

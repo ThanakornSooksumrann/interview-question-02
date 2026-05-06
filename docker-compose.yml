@@ -1,0 +1,48 @@
+services:
+  db:
+    image: postgres:17-alpine
+    container_name: example-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: example_db
+      POSTGRES_USER: example_db_user
+      POSTGRES_PASSWORD: VyKUlV/7+cjdy3T0Yeqduw==
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d example_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  webapi:
+    build:
+      context: ./example-webapi
+      dockerfile: Dockerfile
+    container_name: example-webapi
+    restart: unless-stopped
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:8080
+      ConnectionStrings__DefaultConnection: "Host=db;Port=5432;Database=example_db;Username=example_db_user;Password=VyKUlV/7+cjdy3T0Yeqduw=="
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  webapp:
+    build:
+      context: ./example-webapp
+      dockerfile: Dockerfile
+    container_name: example-webapp
+    restart: unless-stopped
+    ports:
+      - "4000:4000"
+    depends_on:
+      - webapi
+
+volumes:
+  postgres_data:

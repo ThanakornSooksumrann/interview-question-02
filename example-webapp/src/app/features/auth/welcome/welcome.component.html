@@ -1,0 +1,42 @@
+<div class="flex align-items-center justify-content-center min-h-screen px-3"
+     style="background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 60%, #1d4ed8 100%)">
+
+  <div class="border-round-2xl shadow-8 overflow-hidden w-full" style="max-width:440px">
+
+    <!-- Card Header -->
+    <div class="flex flex-column align-items-center justify-content-center py-5 px-4 text-center"
+         style="background: linear-gradient(160deg, #1e3a8a 0%, #2563eb 100%)">
+      <div class="flex align-items-center justify-content-center border-circle mb-3"
+           style="width:5rem;height:5rem;background:white;color:#1e3a8a;border:3px solid rgba(255,255,255,0.35);font-size:1.75rem;font-weight:700">
+        {{ initial }}
+      </div>
+      <h2 class="text-white text-2xl font-bold m-0 mb-1">ยินดีต้อนรับ</h2>
+      <p class="m-0 text-sm font-medium" style="color:rgba(255,255,255,0.85)">{{ username }}</p>
+    </div>
+
+    <!-- Card Body -->
+    <div class="bg-white p-5">
+
+      <!-- Info rows -->
+      <div class="flex flex-column gap-3 mb-5">
+
+<div class="flex align-items-center gap-3 border-round-lg p-3"
+             style="background:#f0f4ff;border:1px solid #c7d2fe">
+          <div class="flex align-items-center justify-content-center border-circle flex-shrink-0"
+               style="width:2.5rem;height:2.5rem;background:#1e3a8a">
+            <i class="pi pi-clock text-white text-sm"></i>
+          </div>
+          <div>
+            <p class="font-semibold text-sm m-0" style="color:#1e3a8a">Token หมดอายุใน 1 ชั่วโมง</p>
+            <p class="text-color-secondary text-xs m-0">หลังจากนั้นระบบจะให้เข้าสู่ระบบใหม่อัตโนมัติ</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Logout -->
+      <p-button label="ออกจากระบบ" icon="pi pi-sign-out" styleClass="w-full"
+                [outlined]="true" severity="danger" (onClick)="onLogout()" />
+    </div>
+  </div>
+</div>

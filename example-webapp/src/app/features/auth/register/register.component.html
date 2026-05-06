@@ -1,0 +1,88 @@
+<div class="flex align-items-center justify-content-center min-h-screen px-3 py-4"
+     style="background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 60%, #1d4ed8 100%)">
+
+  <div class="border-round-2xl shadow-8 overflow-hidden w-full" style="max-width:460px">
+
+    <!-- Card Header -->
+    <div class="flex flex-column align-items-center justify-content-center py-5 px-4 text-center"
+         style="background: linear-gradient(160deg, #1e3a8a 0%, #2563eb 100%)">
+      <div class="flex align-items-center justify-content-center border-circle bg-white mb-4"
+           style="width:4.5rem;height:4.5rem;box-shadow:0 6px 20px rgba(0,0,0,0.25)">
+        <i class="pi pi-user-plus text-3xl" style="color:#1e3a8a"></i>
+      </div>
+      <h2 class="text-white text-2xl font-bold m-0 mb-1">สมัครสมาชิก</h2>
+      <p class="m-0 text-sm" style="color:rgba(255,255,255,0.72)">สร้างบัญชีใหม่เพื่อเข้าใช้งานระบบ</p>
+    </div>
+
+    <!-- Card Body -->
+    <div class="bg-white p-5">
+      <form [formGroup]="form" (ngSubmit)="onRegister()">
+
+        <!-- Username -->
+        <div class="field mb-4">
+          <label class="block font-semibold mb-2 text-sm" style="color:#1e3a8a">ชื่อผู้ใช้งาน</label>
+          <p-iconfield styleClass="w-full">
+            <p-inputicon styleClass="pi pi-user" />
+            <input pInputText formControlName="username"
+                   placeholder="กรอกชื่อผู้ใช้งาน (3-50 ตัวอักษร)"
+                   class="w-full" autocomplete="username"
+                   [ngClass]="{'ng-invalid ng-dirty': isInvalid('username')}" />
+          </p-iconfield>
+          <small *ngIf="isInvalid('username')" class="p-error block mt-1">
+            {{ getUsernameError() }}
+          </small>
+        </div>
+
+        <!-- Password -->
+        <div class="field mb-2">
+          <label class="block font-semibold mb-2 text-sm" style="color:#1e3a8a">รหัสผ่าน</label>
+          <p-password formControlName="password" placeholder="กรอกรหัสผ่าน"
+                      [feedback]="false" [toggleMask]="true"
+                      styleClass="w-full" inputStyleClass="w-full"
+                      autocomplete="new-password"
+                      [ngClass]="{'ng-invalid ng-dirty': isInvalid('password')}" />
+          <small *ngIf="isInvalid('password') && form.get('password')?.hasError('required')" class="p-error block mt-1">
+            กรุณากรอกรหัสผ่าน
+          </small>
+        </div>
+
+        <!-- Password requirements checklist -->
+        <div *ngIf="passwordValue" class="border-round-lg p-3 mb-4"
+             style="background:#f0f4ff;border:1px solid #c7d2fe">
+          <p class="text-xs font-semibold m-0 mb-2" style="color:#1e3a8a">ข้อกำหนดรหัสผ่าน</p>
+          <div *ngFor="let req of requirements" class="flex align-items-center gap-2 mb-1">
+            <i class="pi text-xs"
+               [ngClass]="pwHasError(req.key) ? 'pi-times-circle' : 'pi-check-circle'"
+               [style.color]="pwHasError(req.key) ? '#ef4444' : '#16a34a'"></i>
+            <small [style.color]="pwHasError(req.key) ? '#dc2626' : '#15803d'">{{ req.label }}</small>
+          </div>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="field mb-5">
+          <label class="block font-semibold mb-2 text-sm" style="color:#1e3a8a">ยืนยันรหัสผ่าน</label>
+          <p-password formControlName="confirmPassword" placeholder="กรอกรหัสผ่านอีกครั้ง"
+                      [feedback]="false" [toggleMask]="true"
+                      styleClass="w-full" inputStyleClass="w-full"
+                      autocomplete="new-password"
+                      [ngClass]="{'ng-invalid ng-dirty': isInvalid('confirmPassword') || isGroupError('passwordMismatch')}" />
+          <small *ngIf="isInvalid('confirmPassword') && form.get('confirmPassword')?.hasError('required')"
+                 class="p-error block mt-1">กรุณายืนยันรหัสผ่าน</small>
+          <small *ngIf="!isInvalid('confirmPassword') && isGroupError('passwordMismatch')"
+                 class="p-error block mt-1">รหัสผ่านและยืนยันรหัสผ่านไม่ตรงกัน</small>
+        </div>
+
+        <!-- Submit -->
+        <p-button type="submit" label="สมัครสมาชิก" icon="pi pi-user-plus"
+                  styleClass="w-full mb-4" [loading]="loading" />
+
+        <div class="text-center pt-2" style="border-top:1px solid #e2e8f0">
+          <span class="text-color-secondary text-sm">มีบัญชีอยู่แล้ว?&nbsp;</span>
+          <a routerLink="/login" class="font-semibold text-sm cursor-pointer no-underline"
+             style="color:#1e3a8a">เข้าสู่ระบบ</a>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

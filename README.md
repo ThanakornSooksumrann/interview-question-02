@@ -11,7 +11,8 @@
 |------------|---------|
 | Angular | 19.2 |
 | PrimeNG | 19.1 |
-| PrimeFlex | 3.3 |
+| PrimeFlex | 4.0 |
+| PrimeIcons | 7.0 |
 | Node.js (runtime) | 20 LTS |
 
 ## Backend
@@ -19,11 +20,13 @@
 |------------|---------|
 | .NET | 9.0 |
 | ASP.NET Core Web API | 9.0 |
-| Entity Framework Core | 9.0 |
-| Npgsql (PostgreSQL driver) | 9.0 |
-| JWT Bearer Authentication | 9.0 |
-| BCrypt.Net | 4.1 |
-| Swagger / Swashbuckle | 6.9 |
+| Entity Framework Core | 9.0.7 |
+| Npgsql.EntityFrameworkCore.PostgreSQL | 9.0.4 |
+| JWT Bearer Authentication | 9.0.7 |
+| BCrypt.Net-Next | 4.1.0 |
+| Swashbuckle.AspNetCore (Swagger) | 6.9.0 |
+| Newtonsoft.Json | 13.0.4 |
+| log4net | 3.3.1 |
 
 ## Database
 | Technology | Version |

@@ -1,6 +1,34 @@
 # interview-question-02
 
-Full-stack authentication system — Angular 19 + .NET 9 Web API + PostgreSQL
+ระบบ Authentication แบบ Full-stack
+
+---
+
+# Tech Stack
+
+## Frontend
+| Technology | Version |
+|------------|---------|
+| Angular | 19.2 |
+| PrimeNG | 19.1 |
+| PrimeFlex | 3.3 |
+| Node.js (runtime) | 20 LTS |
+
+## Backend
+| Technology | Version |
+|------------|---------|
+| .NET | 9.0 |
+| ASP.NET Core Web API | 9.0 |
+| Entity Framework Core | 9.0 |
+| Npgsql (PostgreSQL driver) | 9.0 |
+| JWT Bearer Authentication | 9.0 |
+| BCrypt.Net | 4.1 |
+| Swagger / Swashbuckle | 6.9 |
+
+## Database
+| Technology | Version |
+|------------|---------|
+| PostgreSQL | 17 |
 
 ---
 

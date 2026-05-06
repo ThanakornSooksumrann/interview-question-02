@@ -39,11 +39,11 @@
 
 ## Services
 
-| Service | Image | Port |
-|---------|-------|------|
-| webapp | node:20-alpine (serve) | http://localhost:4000 |
-| webapi | dotnet/aspnet:9.0 | http://localhost:8080 |
-| db | postgres:17-alpine | localhost:5432 |
+| Service | Port |
+|---------|------|
+| webapp | http://localhost:4000 |
+| webapi | http://localhost:8080 |
+| db | localhost:5432 |
 
 ## Run all services
 ```
